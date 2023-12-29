@@ -1,0 +1,48 @@
+$AccentGreen: #ADFF00;
+$FadeAccentGreen: #aeff0040;
+$AccentViolets: #8F00FF;
+$AccentLilRed: #FF3030;
+$White: #000000;
+$PaperWhite: #141414;
+$Black: #ffffff;
+$FadedBlack: #ffffff18;
+$DarkGray: #e4e4e460;
+$FadedWhite: #00000040;
+/*
+
+$AccentGreen: #ADFF00;
+$FadeAccentGreen: #aeff0040;
+$AccentViolets: #8F00FF;
+$AccentLilRed: #FF3030;
+$White: #ffffff;
+$PaperWhite: #e4e4e4;
+$Black: #000000;
+$FadedBlack: #00000040;
+$DarkGray: #141414;
+
+*/
+@font-face {
+    font-family: "Inter";
+    src: url(../Inter-Variable.ttf);
+}
+// font-family: Inter;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  background:unset;
+    text-decoration: unset;
+    text-decoration-color: black;
+    border: 0;
+    outline-offset: unset;
+}
+@mixin sc($s) {
+    @media screen and (min-width: $s) {
+        @content;
+    }
+}
+@mixin rsc($s) {
+    @media screen and (max-width: $s) {
+        @content;
+    }
+}

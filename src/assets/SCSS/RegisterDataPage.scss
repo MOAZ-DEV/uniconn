@@ -1,0 +1,307 @@
+@import "./Styles&Font&Mixins.scss";
+div.register-data-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0px;
+
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    background: $White;
+    color: $Black;
+
+    nav {
+        position: sticky;
+        top: 0;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        max-height: 90px;
+        width: calc(100% - 2px);
+        padding: 45px 24px;
+        margin: 0 1px;
+
+        background: #000000b0;
+        backdrop-filter: blur(45px);
+
+        z-index: 1000;
+
+        a.logo img {
+            height: fit-content;
+            width: 45px;
+        }
+    }
+    .view {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        height: fit-content;
+        width: 100vw;
+        max-width: 650px;
+
+        padding: 75px 14px 45px 14px;
+        overflow: visible;
+
+        div.text-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            padding: 0 0px;
+
+            color: $Black;
+
+            h3 {
+                font-family: Inter;
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 100%;
+            }
+            p {
+                font-family: Inter;
+                font-size: 17px;
+                font-weight: 400;
+                font-style: normal;
+                line-height: 125%;
+
+                text-align: left;
+                opacity: 0.45;
+            }
+        }
+        label {
+            font-family: Inter;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 135%;
+
+            padding: 12px;
+            opacity: 0.75;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            div.box {
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+
+                background: $FadedBlack;
+                border: solid 1px $FadedBlack;
+                border-radius: 12px;
+                padding: 16px 16px;
+
+                div.warper {
+                    display: flex;
+                    flex-direction: column;
+
+                    gap: 3px;
+
+                    p {
+                        font-family: Inter;
+                        font-size: 14px;
+                        font-weight: 400;
+                        font-style: normal;
+                        line-height: 125%;
+
+                        text-align: left;
+                        opacity: 0.95;
+
+                        &::after {
+                            content: "";
+
+                            display: block;
+
+                            height: 1px;
+                            width: 100%;
+
+                            margin: 12px 0 0 0;
+
+                            background: $FadedBlack;
+                        }
+                    }
+                    span.text {
+                        font-family: Inter;
+                        font-size: 12px;
+                        font-weight: 300;
+                        font-style: normal;
+                        line-height: 125%;
+
+                        text-align: left;
+                        opacity: 0.45;
+                    }
+                    div.btns-wrap {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-start;
+                        gap: 4px;
+
+                        margin-top: 12px;
+
+                        button {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            gap: 12px;
+                            align-self: stretch;
+
+                            max-height: 35px;
+                            width: 100%;
+                            max-width: 145px;
+
+                            padding: 7px 7px;
+
+                            border: solid 1px $FadedBlack;
+                            border-radius: 45px;
+
+                            color: $Black;
+
+                            &:last-child {
+                                border: solid 1px $AccentLilRed;
+                                color: $AccentLilRed;
+                            }
+                        }
+                    }
+                }
+                span.wrap {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0px;
+
+                    margin: 12px 0;
+
+                    span {
+                        margin: 12px 0;
+                    }
+                    input {
+                        width: 100%;
+                        margin: 0 !important;
+                        border-radius: 0;
+
+                        &:first-child {
+                            border-radius: 7px 7px 0 0;
+                        }
+                        &:last-child {
+                            border-radius: 0 0 7px 7px;
+                            border-top: 0;
+                        }
+                    }
+                }
+                input {
+                    font-family: Inter;
+                    font-size: 14px;
+                    font-weight: 400;
+                    font-style: normal;
+                    line-height: 125%;
+
+                    text-align: left;
+
+                    background: $PaperWhite;
+                    border-radius: 7px;
+                    border: solid 1px $FadedBlack;
+
+                    margin: 7px 0 12px 0;
+                    padding: 12px 12px;
+
+                    color: $Black;
+
+                    &:focus-visible:valid {
+                        border: solid 1px $AccentGreen !important;
+                    }
+                    &:invalid {
+                        border: solid 1px $AccentLilRed;
+                    }
+                }
+                &.pic {
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    p::after {
+                        display: none !important;
+                    }
+
+                    img {
+                        height: 100%;
+                        width: max-content;
+                        max-height: 145px;
+                        min-width: fit-content;
+
+                        background: $FadedBlack;
+                        outline: unset;
+                        border: solid 1px $FadedBlack;
+                        border-radius: 75px;
+
+                        aspect-ratio: 4/4;
+                        object-fit: contain;
+                    }
+                }
+            }
+            div.submit-wrap {
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+
+                button {
+                    display: flex;
+                    padding: 18px 20px;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 18px;
+                    align-self: stretch;
+        
+                    text-align: center;
+                    font-family: Inter;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 900;
+                    line-height: 100%; /* 18px */
+                    letter-spacing: -0.5px;
+        
+                    color: $Black;
+
+                    border-radius: 12px;
+                    background: $FadedWhite;
+    
+transition: .25s;
+box-sizing: content-box;
+border:solid 1px transparent;
+
+
+                    &[type=submit] {
+                        color: $AccentGreen;
+                        background: $FadedBlack;
+                        
+                        &:hover {
+                            border:solid 1px $AccentGreen;
+                        }
+                    }&[type=reset] {
+                        color: $AccentLilRed;
+                        border:solid 1px $FadedBlack;
+
+                        &:hover {
+                            border:solid 1px $AccentLilRed;
+                        }
+                    }
+                    &:hover {
+                        background: $PaperWhite;
+                    }
+                }
+            }
+        }
+    }
+}

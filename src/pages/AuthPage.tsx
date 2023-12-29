@@ -1,89 +1,56 @@
 import UCsvg from "../assets/SVGs/UNICONN-Logo.svg";
 import UCBGsvg from "../assets/SVGs/UC-BG-vector-light.svg";
-import Applesvg from "../assets/SVGs/Apple-Dark.svg";
+import Phonesvg from "../assets/SVGs/COCO/Line/Phone.svg";
 import Googlesvg from "../assets/SVGs/Google.svg";
-import '../assets/SCSS/AuthPages.scss';
+import '../assets/SCSS/AuthPage.scss';
+
 import { useNavigate } from 'react-router-dom';
-import { useContext, useEffect } from "react";
-import { AppStatues } from "../App";
-import { useGoogleLogin } from '@react-oauth/google';
-
-
+import { auth, googleProvider } from '../auth/GoogleAuth';
+import { signInWithPopup } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Cookies from "universal-cookie";
 
 export const AuthView = () => {
 
-  const GoogleLogin = useGoogleLogin({
-    onSuccess: tokenResponse => console.log(tokenResponse),
-  });
-
-    const AS = useContext(AppStatues),
+    const
+        [user] = useAuthState(auth),
+        cookie = new Cookies(),
+        GoogleLogin = async () => {
+            try {
+                await signInWithPopup(auth, googleProvider);
+                cookie.set("userState", user, {});
+                nav("/uniconn/profile");
+                console.log(user)
+            } catch (error) {
+                console.error("Error signing in with Google:", error);
+            }
+        },
         nav = useNavigate();
-    useEffect(() => {
-        (!AS.state.username) ?
-            nav("/") : console.log('nope');
-    }, [true])
-    return <div className="auth-page">
 
+    return <div className="auth-page">
         <nav>
-            <span className="logo"><img src={UCsvg} alt="UniConn" /></span></nav>
+            <a href="/uniconn/" className="logo"><img src={UCsvg} alt="UniConn" /></a></nav>
 
         <div className="view">
             <div className="bg-vector-wrap">
                 <img src={UCBGsvg} />
             </div>
-            <div className="text-wrap">
-                <h3>Connect. Share. Amplify.</h3>
-                <p> Perfect for business people, developers, designers,
-                    and anyone looking to share their links and career-related files.</p>
-            </div>
             <div className="auth-wrap">
+                <div className="text-wrap">
+                    <h3>Connect. Share. Amplify.</h3>
+                    <p> Perfect for business people, developers, designers,
+                        and anyone looking to share their links and career-related files.</p>
+                </div>
                 <div className="third-party-authers">
-                    <button type="button" id="btn-apple">
+                    <button type="button" id="btn-apple" onClick={() => GoogleLogin()}>
                         <img src={Googlesvg} />
                         <span>Google</span></button>
-                    <button type="button" id="btn-google"
-                    onClick={()=> {
-                      GoogleLogin();
-                          
-                    }}>
-                        <img src={Applesvg} />
-                        <span>Apple</span></button>
+                    <button className="add-btn">
+                        <img src={Phonesvg} />
+                        <span>Phone</span></button>
                 </div>
                 <p>Trusted third party Authentication process.</p>
             </div>
         </div>
     </div>;
-}, RegisterAuth = () => {
-
-    return <div className="auth-Page">
-
-        <nav>
-            <span className="logo"><img src={UCsvg} alt="UniConn" /></span></nav>
-
-        <div className="view">
-            <div className="text-wrap">
-                <h3>Connect. Share. Amplify.</h3>
-                <p> Join our bio link sharing app and
-                    unlock your online presence.</p>
-            </div>
-            <form className="auth-form" onSubmit={() => { }}>
-                <input type="text" />
-                <input type="email" name="" id="" placeholder="Email" />
-                <input type="password" name="" id="" placeholder="Password" />
-                <button>Register</button>
-            </form>
-            <span>
-                <p>Already have an account? <a href="/">Log in</a>.</p>
-            </span>
-        </div>
-    </div>;
 }
-/**
- 
-moaazallaelden@gmail.com
-Password
-Log in
-Forgot password?
-Or
-Register
- */

@@ -1,0 +1,170 @@
+@import "./Styles&Font&Mixins.scss";
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0px;
+
+    height: 100svh;
+    max-height: 100vh;
+    max-width: 100vw;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    background: $White;
+
+    nav {
+        position: sticky;
+        top: 0;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        max-height: 90px;
+        width: 100%;
+        padding: 45px 25px;
+
+        background: rgba(255, 255, 255, 0);
+        backdrop-filter: blur(7.5px);
+
+        a.logo img {
+            width: 45px;
+        }
+    }
+    .view {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        height: 100%;
+        max-width: 650px;
+        padding: 0 14px 45px 14px;
+        overflow: visible;
+
+        @include sc(900px) {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        div.bg-vector-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: visible;
+
+            height: 100%;
+            max-width: 100vw;
+
+            img {
+                max-height: fill-available;
+                width: 130vw;
+
+                overflow: visible;
+            }
+            @include sc(900px) {
+                display: none;
+                max-width: 50%;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        div.auth-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+
+            padding: 0 25px;
+
+            div.text-wrap {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+
+                padding: 0 0px;
+
+                color: $Black;
+
+                h3 {
+                    font-family: Inter;
+                    font-size: 32px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 135%;
+                }
+                p {
+                    font-family: Inter;
+                    font-size: 17px;
+                    font-weight: 400;
+                    font-style: normal;
+                    line-height: 125%;
+
+                    text-align: left;
+                    opacity: 0.45;
+                }
+            }
+            div.third-party-authers {
+                display: flex;
+                flex-direction: row;
+                gap: 7px;
+
+                width: 100%;
+
+                button {
+                    width: 100%;
+                    border-radius: 13px;
+                    border: 1px solid var($FadedWhite, rgba(0, 0, 0, 0.08));
+                    background: $PaperWhite;
+                    cursor: pointer;
+
+                    box-sizing: border-box;
+
+                    transition: outline .5s ease-out, background-color .5s ease-out;
+
+                    &:hover, &:not(:focus) {
+                      outline:inset 1px solid $AccentGreen;
+                    }
+                }
+            }
+            p {
+                text-align: center;
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 125%; /* 17.5px */
+
+                opacity: 0.45;
+
+                color: $Black;
+            }
+        }
+        button {
+            display: flex;
+            padding: 12px 20px;
+            flex-direction: row;
+            justify-content: c;
+            align-items: center;
+            gap: 18px;
+            align-self: stretch;
+            margin-top: 12px;
+
+            text-align: center;
+            font-family: Inter;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 100%; /* 18px */
+            letter-spacing: -0.5px;
+
+            color: $Black;
+
+            
+        }
+    }
+}
